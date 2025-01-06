@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -53,11 +52,16 @@ elif choice == "EDA 📊":
 
         if plot_type == "Scatterplot":
             fig, ax = plt.subplots()
-            sns.scatterplot(x=dataset[col_x], y=dataset[col_y], ax=ax)
+            ax.scatter(dataset[col_x], dataset[col_y])
+            ax.set_title(f"Scatterplot: {col_x} vs {col_y}")
+            ax.set_xlabel(col_x)
+            ax.set_ylabel(col_y)
             st.pyplot(fig)
         elif plot_type == "Boxplot":
             fig, ax = plt.subplots()
-            sns.boxplot(x=dataset[col_x], y=dataset[col_y], ax=ax)
+            ax.boxplot(dataset[col_y])
+            ax.set_title(f"Boxplot de {col_y}")
+            ax.set_ylabel(col_y)
             st.pyplot(fig)
 
 # Regresiones
